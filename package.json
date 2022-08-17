@@ -1,0 +1,43 @@
+{
+  "name": "vexa",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": {
+    "packages": [
+      "config/**",
+      "core/**",
+      "externals/**"
+    ],
+    "nohoist": [
+      "**/jest",
+      "**/ts-node",
+      "**/@vexa/eslint-*",
+      "**/@vexa/prettier-*",
+      "**/@vexa/core-render",
+      "**/@storybook/*"
+    ]
+  },
+  "scripts": {
+    "bootstrap": "yarn install && yarn run lerna:bootstrap",
+    "dev": "npm run clear && npm run bootstrap",
+    "🔥": "----------------------------------------",
+    "lerna:bootstrap": "lerna bootstrap",
+    "lerna:test": "lerna run test --parallel",
+    "lerna:build": "lerna run build --parallel",
+    "🧹": "----------------------------------------",
+    "clear": "yarn run clear:dist & yarn run clear:yarn.lock & yarn run clear:coverage & yarn run clear:node_modules",
+    "clear:node_modules": "rimraf ./**/node_modules",
+    "clear:yarn.lock": "rimraf ./yarn.lock",
+    "clear:dist": "rimraf ./**/dist",
+    "clear:coverage": "rimraf ./**/coverage"
+  },
+
+  "author": "Pan Alexey",
+  "license": "MIT",
+
+  "homepage": "https://github.com/vxv-me/vexa#readme",
+  "dependencies": {
+    "lerna": "^5.4.1",
+    "rimraf": "^3.0.2"
+  }
+}

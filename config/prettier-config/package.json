@@ -1,0 +1,11 @@
+{
+  "name": "@vexa/prettier-config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "prettier": "^2.2.1"
+  }
+}

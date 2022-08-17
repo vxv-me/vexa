@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "@vexa/eslint-config"
+  ]
+}
