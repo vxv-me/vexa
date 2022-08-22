@@ -1,6 +1,11 @@
 const express = require("express");
-const { AppRender } = require("@vexa/core-render");
+const { AppRender, async } = require("@vexa/core-render");
 const appRender = new AppRender();
+
+// (async () => {
+//   const result = await appRender.render();
+//   console.log(result);
+// })();
 
 const PORT = 3000;
 const app = express();
@@ -14,7 +19,7 @@ app.get("*", async (request, response) => {
   response.send(`<!DOCTYPE html>
   <html>
   <head>
-    <title>UI Kit Curious Byte</title>
+    <title>Vexa</title>
     ${result.appAssets
       .map((asset) => {
         return `<script defer type="text/javascript" src="${asset}"></script>`;
