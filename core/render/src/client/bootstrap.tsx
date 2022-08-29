@@ -1,21 +1,45 @@
 import React from "react";
-import { hydrate } from "react-dom";
-import { createRoot } from "react-dom/client";
-import { App } from "../common/App";
+
+import { createRoot, hydrateRoot } from "react-dom/client";
+import { loadModule } from "./utils/loadModule";
 
 (async () => {
-  const text = window.__text__ || "";
+  const state = window.__text__ || "";
+
+  const Element2 = await loadModule(
+    "http://127.0.0.1:8080/widget-2/dist/client/widget.js",
+    "widgte-2@1.0.0",
+    "widget"
+  );
+
+  const Element1 = await loadModule(
+    "http://127.0.0.1:8080/widget-1/dist/client/widget.js",
+    "widgte-1@1.0.0-dev",
+    "widget"
+  );
 
   const container = document.getElementById("root");
   if (!container) {
     return "";
   }
+
   if (container.hasChildNodes()) {
     console.log("hydrate");
-    hydrate(<App text={text} />, container);
+    hydrateRoot(
+      container,
+      <div>
+        <Element1 data={state} />
+        <Element2 data={state} />
+      </div>
+    );
   } else {
     console.log("render");
     const root = createRoot(container);
-    root.render(<App text={text} />);
+    root.render(
+      <div>
+        <Element1 data={state} />
+        <Element2 data={state} />
+      </div>
+    );
   }
 })();

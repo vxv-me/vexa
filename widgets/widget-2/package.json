@@ -1,36 +1,31 @@
 {
-  "name": "@vexa/core-render",
+  "name": "@vexa/widgte-2",
   "version": "1.0.0",
-  "main": "dist/server/index.js",
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": "Pan Alexey",
-  "license": "MIT",
+  "private": true,
   "scripts": {
+    "dev": "yarn run build && yarn run tar",
+    "tar": "tar -C dist -czvf dist.tgz ./",
     "test": "jest --coverage",
-    "dev": "yarn run build",
-    "build": "yarn run build:server && yarn run build:client",
-    "build:server": "NODE_ENV=production webpack build --config webpack.config.server.ts",
+    "build": "yarn run build:client && yarn run build:server",
     "build:client": "NODE_ENV=production webpack build --config webpack.config.client.ts",
+    "build:server": "NODE_ENV=production webpack build --config webpack.config.server.ts",
     "lint": "eslint ./ --ext .ts,.tsx,.js,.jsx",
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "mkdirp":"^1.0.4",
-    "tar":"^6.1.11",
-    "semver":"^7.3.7",
-    "react":"^18.2.0",
-    "react-dom":"^18.2.0",
-    "fs-extra": "^10.1.0"
+    "moment": "^2.24.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-typescript": "^7.18.6"
   },
   "devDependencies": {
     "@types/jest": "^28.1.6",
     "@types/node": "^18.6.2",
     "@types/react": "^18.0.15",
+    "@types/semver": "^7.3.12",
     "@types/fs-extra":"^9.0.13",
     "@types/react-dom": "^18.0.6",
     "@types/webpack": "^5.28.0",
@@ -51,6 +46,9 @@
     "@babel/core":"^7.18.10",
     "@babel/preset-env":"^7.18.10",
     "@babel/preset-typescript":"^7.18.6",
-    "@babel/preset-react":"^7.18.6"
+    "@babel/preset-react":"^7.18.6",
+    "mini-css-extract-plugin": "^2.6.1",
+    "css-loader":"^6.7.1",
+    "style-loader":"^3.3.1"
   }
 }

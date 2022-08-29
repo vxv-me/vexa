@@ -6,9 +6,11 @@
     "packages": [
       "config/**",
       "core/**",
-      "externals/**"
+      "externals/**",
+      "widgets/**"
     ],
     "nohoist": [
+      "**/webpack",
       "**/jest",
       "**/ts-node",
       "**/@vexa/eslint-*",

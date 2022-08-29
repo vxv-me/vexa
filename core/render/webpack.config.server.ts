@@ -3,10 +3,7 @@ import * as path from "path";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import { isPackage } from "./webpack/package";
 
-// // webpack configs
-// import * as WebpackRules from "./webpack/rules";
-// import * as WebpackResolves from "./webpack/resolves";
-// import * as WebpackModuleFederation from "./webpack/moduleFederation";
+// webpack configs
 
 import webpack from "webpack";
 const { ModuleFederationPlugin } = webpack.container;
@@ -16,6 +13,7 @@ export default (): Configuration => {
     entry: {
       index: path.resolve("./src/server/index.tsx"),
     },
+    mode: "production",
     devtool: "source-map",
     target: "node",
     output: {
@@ -39,7 +37,7 @@ export default (): Configuration => {
           return callback(undefined, "commonjs " + request);
         }
         return callback();
-      }
+      },
     ],
     resolve: {
       extensions: [".js", ".ts", ".tsx", ".css"],

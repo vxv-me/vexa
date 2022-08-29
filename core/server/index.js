@@ -12,19 +12,45 @@ const app = express();
 
 app.use(express.static(appRender.getClinetAssetsPath()));
 
+// todo create inline css
+const renderCss = (css, host = "") => {
+  const links = [];
+  css.forEach((file) => {
+    links.push(`<link rel="stylesheet" href="${host + file}" />`);
+  });
+
+  return links.join("");
+};
+
+const renderJs = (js, host = "") => {
+  const scripts = [];
+  js.forEach((file) => {
+    scripts.push(
+      `<script defer="defer" type="application/javascript" src="${
+        host + file
+      }"></script>`
+    );
+  });
+
+  return scripts.join("");
+};
+
 app.get("*", async (request, response) => {
   const text = "example";
   const result = await appRender.render(text);
+
+  const { appAssets, widgetsAssets } = result;
 
   response.send(`<!DOCTYPE html>
   <html>
   <head>
     <title>Vexa</title>
-    ${result.appAssets
-      .map((asset) => {
-        return `<script defer type="text/javascript" src="${asset}"></script>`;
-      })
-      .join("")}
+
+    ${renderJs(appAssets.js)}
+
+    <!-- -->
+
+    ${renderCss(appAssets.css)}
   </head>
   <script>
     window.__text__ = "${text}";
