@@ -19,8 +19,6 @@ const getCssChunks = (stats: Record<string, webpack.StatsChunkGroup>): {
   initialCss: Array<string>;
   allCss: Array<string>;
 } => {
-  // const entrypoints = Object.keys(stats);
-
   const allCss: Array<string> = getAssetsCss(stats.assets as Array<webpack.Asset>);
 
   let initialCss: Array<string> = [];

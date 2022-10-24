@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./styles.css";
+import styles from "./style.module.css";
 
 const Title:React.FC<any> = () => {
   React.useEffect(() => {
@@ -7,7 +7,7 @@ const Title:React.FC<any> = () => {
   }, []);
 
   return (
-    <h2 className={styles['widget-title']}>BRICKS WIDGET 2</h2>
+    <h2 className={styles['widget-title']}>BRICKS WIDGET 1</h2>
   );
 }
 

@@ -31,7 +31,9 @@
     "clear:node_modules": "rimraf ./**/node_modules",
     "clear:yarn.lock": "rimraf ./yarn.lock",
     "clear:dist": "rimraf ./**/dist",
-    "clear:coverage": "rimraf ./**/coverage"
+    "clear:coverage": "rimraf ./**/coverage",
+    "🥷": "----------------------------------------",
+    "dev:build": "lerna run build --scope @vexa/builder && lerna run build --scope @vexa/widget-2"
   },
 
   "author": "Pan Alexey",

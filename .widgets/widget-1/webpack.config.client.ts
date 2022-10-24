@@ -8,16 +8,14 @@ const { ModuleFederationPlugin } = webpack.container;
 
 import { name, version } from './package.json';
 const packageName = name.replace('@vexa/','');
-const widgetName = `${packageName}~${version}`;
+const widgetName = `${packageName}@${version}`;
 
 export default (): Configuration => {
   const config: Configuration = {
-    entry: {
-      index: path.resolve(__dirname, "./src/Widget.tsx"),
-    },
+    entry: './src/index',
     target: "web",
     mode: "production",
-    devtool: "hidden-source-map",
+    devtool: "source-map",
     output: {
       chunkLoadingGlobal: `webpack_chunks_${widgetName}`, // todo name hash
       uniqueName: widgetName,
@@ -43,7 +41,7 @@ export default (): Configuration => {
             // @ts-ignore
             name(module) {
               const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
-              return `vendor.${packageName.replace('@', '')}`
+              return `vendor/npm.${packageName.replace('@', '')}`
             },
           },
         },
@@ -98,7 +96,7 @@ export default (): Configuration => {
         ],
       }),
       new MiniCssExtractPlugin({
-        filename: `${widgetName}.[contenthash].css`, // css
+        filename: `${widgetName}.[contenthash].css`,
       }),
       new ManifestPlugin({
         statsOptions: {

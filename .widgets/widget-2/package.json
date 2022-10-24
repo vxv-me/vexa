@@ -1,6 +1,6 @@
 {
-  "name": "@vexa/widgte-1",
-  "version": "1.0.0-dev",
+  "name": "@vexa/widgte-2",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "yarn run build && yarn run tar",
@@ -17,7 +17,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^7.2.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-typescript": "^7.18.6"
   },
   "devDependencies": {
     "@types/jest": "^28.1.6",

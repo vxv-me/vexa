@@ -9,23 +9,24 @@ import { isPackage } from "./webpack/package";
 
 import { name, version } from './package.json';
 const packageName = name.replace('@vexa/','');
-const widgetName = `${packageName}~${version}`;
+const widgetName = `${packageName}@${version}`;
 
 export default (): Configuration => {
   const config: Configuration = {
     entry: {
-      index: path.resolve(__dirname, "./src/Widget.tsx"),
+      index: path.resolve(__dirname, "./src/index.ts"),
     },
     target: "node",
     mode: "production",
+    devtool: "source-map",
     output: {
       chunkLoadingGlobal: "webpack_widget_chunks",
       uniqueName: widgetName,
       publicPath: "auto",
       library: "commonjs",
       path: path.resolve(__dirname, "dist/server"),
-      filename: `${widgetName}.[contenthash].js`,
-      chunkFilename: "chunks.widget.js",
+      filename: "[name].[contenthash].js",
+      chunkFilename: "chunks/widget.js",
     },
     resolve: {
       extensions: [".js", ".ts", ".tsx", ".css"],
@@ -68,6 +69,8 @@ export default (): Configuration => {
         {
           test: /\.css$/i,
           use: [
+            // MiniCssExtractPlugin.loader,
+            // "css-loader/locals"
             {
               loader: 'css-loader',
               options: {

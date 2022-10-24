@@ -56,10 +56,9 @@ export class ManifestPlugin {
 
       // Build simple manifest
       const manifest = {
-        moduleName: 'widget.js',
+        module: 'widget.js',
         css: getCssChunks(stats),
-      };
-
+      }
       const output = this.output;
       fs.writeJson(output, manifest, err => {
         next();
