@@ -46,17 +46,12 @@ export class AppRender {
     const appAssets = await this.getAppAssets();
     const widgets = await Promise.all([
       baseWidget.loadWidget({
-        widgetName: "widget-1@1.0.0-dev",
+        widgetName: "widget-1~1.0.0-dev",
         widgetHost: "http://127.0.0.1:8080/widget-1/dist.tgz",
-      }),
-      baseWidget.loadWidget({
-        widgetName: "widget-2@1.0.0",
-        widgetHost: "http://127.0.0.1:8080/widget-2/dist.tgz",
       }),
     ]);
 
-    const Elemen1 = widgets[0].element;
-    const Elemen2 = widgets[1].element;
+    const Element1 = widgets[0].element;
 
     let widgetsJS = [];
     let widgetsCSS = [];
@@ -70,8 +65,7 @@ export class AppRender {
 
     const responseStream = await renderComponentStream(
       <div>
-        <Elemen1 data={state} />
-        <Elemen2 data={state} />
+        <Element1 data={state} />
       </div>
     );
 

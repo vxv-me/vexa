@@ -20,7 +20,7 @@ export const loadModule = async (
     //
     console.log("window.widgets", scope, window.widget);
     const container = window.widget[scope] as Container;
-
+    console.log("container", container);
     await container.init(__webpack_share_scopes__.default);
 
     console.log("container", container);
