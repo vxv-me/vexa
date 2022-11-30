@@ -14,16 +14,10 @@ export const loadModule = async (
   module: string
 ): Promise<React.ElementType> => {
   try {
-    await __webpack_init_sharing__("default");
-
     await loadScript(url);
-    //
-    console.log("window.widgets", scope, window.widget);
+    await __webpack_init_sharing__("default");
     const container = window.widget[scope] as Container;
-    console.log("container", container);
     await container.init(__webpack_share_scopes__.default);
-
-    console.log("container", container);
     const factory = await container.get(module);
     return factory().default as React.ElementType;
   } catch (error) {

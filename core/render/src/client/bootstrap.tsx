@@ -8,7 +8,7 @@ import { loadModule } from "./utils/loadModule";
 
   const Element1 = await loadModule(
     "http://127.0.0.1:8080/widget-1/dist/client/widget.js",
-    "widgte-1~1.0.0-dev",
+    "widget-1~1.0.0-dev",
     "widget"
   );
 

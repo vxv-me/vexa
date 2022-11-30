@@ -44,13 +44,12 @@ app.get("*", async (request, response) => {
   response.send(`<!DOCTYPE html>
   <html>
   <head>
-    <title>Vexa</title>
+    <title>BRICKS</title>
 
     ${renderJs(appAssets.js)}
-
     <!-- -->
-
     ${renderCss(appAssets.css)}
+    ${renderCss(widgetsAssets.css, "http://127.0.0.1:8080/widget-1/dist/client/")}
   </head>
   <script>
     window.__text__ = "${text}";
